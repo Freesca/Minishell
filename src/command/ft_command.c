@@ -6,7 +6,7 @@
 /*   By: fdonati <fdonati@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 14:17:49 by fdonati           #+#    #+#             */
-/*   Updated: 2024/06/12 19:46:18 by fdonati          ###   ########.fr       */
+/*   Updated: 2024/06/17 14:30:09 by fdonati          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,7 @@ static int	ft_data_init(t_data *data)
 	data->original_stdin = dup(STDIN_FILENO);
 	if (data->original_stdin == -1)
 		return (-1);
-	if (pipe(data->pipe_fd) == -1)
-		return (-1);
-	data->fd_in = data->original_stdin;
+	data->fd_in = STDIN_FILENO;
 	return (0);
 }
 

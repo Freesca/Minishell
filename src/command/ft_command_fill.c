@@ -6,7 +6,7 @@
 /*   By: fdonati <fdonati@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 14:11:49 by fdonati           #+#    #+#             */
-/*   Updated: 2024/06/12 19:18:26 by fdonati          ###   ########.fr       */
+/*   Updated: 2024/06/14 11:17:15 by fdonati          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,8 @@ int	ft_redir_init(t_cmd *cmd, t_token *token, t_env **envp)
 		if (token->type == T_REDIR_OUT || token->type == T_REDIR_APPEND)
 			ret = ft_addredir(token->type, token->next->value,
 					&cmd->redir_out);
+		if (ret != 0)
+			return (0);
 		token = token->next;
 	}
 	return (ret);

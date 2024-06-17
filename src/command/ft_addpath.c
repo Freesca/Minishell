@@ -6,7 +6,7 @@
 /*   By: fdonati <fdonati@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 16:38:28 by fdonati           #+#    #+#             */
-/*   Updated: 2024/06/10 14:24:35 by fdonati          ###   ########.fr       */
+/*   Updated: 2024/06/14 15:26:12 by fdonati          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,17 @@ static int	ft_addpath_n_access(char **path_split,
 	return (1);
 }
 
+static int	ft_is_dir(const char *value)
+{
+	struct stat	buf;
+
+	if (stat(value, &buf) == -1)
+		return (0);
+	if (S_ISDIR(buf.st_mode))
+		return (1);
+	return (0);
+}
+
 int	ft_addpath(char *value, char **path, t_env **envp)
 {
 	char	**path_split;
@@ -71,9 +82,20 @@ int	ft_addpath(char *value, char **path, t_env **envp)
 
 	if (value == NULL || value[0] == '\0')
 		return (0);
+	if (ft_strchr(value, '/') != NULL)
+	{
+		if (access(value, F_OK) != -1 && access(value, X_OK) != -1
+			&& ft_is_dir(value) == 0)
+		{
+			*path = ft_strdup(value);
+			if (*path == NULL)
+				return (-1);
+		}
+		return (0);
+	}
 	path_split = ft_split_path(envp);
 	if (path_split == NULL)
-		return (-1);
+		return (0);
 	ret = ft_addpath_n_access(path_split, path, value);
 	return (ret);
 }

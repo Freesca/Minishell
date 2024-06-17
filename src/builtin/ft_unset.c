@@ -6,7 +6,7 @@
 /*   By: fdonati <fdonati@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 15:59:52 by fdonati           #+#    #+#             */
-/*   Updated: 2024/06/07 16:25:57 by fdonati          ###   ########.fr       */
+/*   Updated: 2024/06/14 11:14:09 by fdonati          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ static int	ft_remove_key_n_value(t_env **envp, char *key)
 		tmp = tmp->next;
 	}
 	return (0);
-
 }
 
 int	ft_unset(t_cmd *cmd, t_env **envp)

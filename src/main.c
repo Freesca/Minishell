@@ -6,7 +6,7 @@
 /*   By: fdonati <fdonati@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 15:00:56 by fdonati           #+#    #+#             */
-/*   Updated: 2024/06/13 11:57:43 by fdonati          ###   ########.fr       */
+/*   Updated: 2024/06/17 16:15:38 by fdonati          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,7 @@ static void	ft_readline(t_env **envp, int *exit_status,
 		g_exit_status = 0;
 	}
 	add_history(line);
-	if (*exit_status == 0)
-		*exit_status = ft_tokenize(line, token, *envp);
-	else
-		free(line);
+	*exit_status = ft_tokenize(line, token, *envp);
 }
 
 int	main(int argc, char **argv, char **environ)
@@ -81,9 +78,6 @@ int	main(int argc, char **argv, char **environ)
 	(void)argc;
 	(void)argv;
 	exit_status = 0;
-	token = NULL;
-	cmd = NULL;
-	envp = NULL;
 	envp = ft_env_init(environ);
 	if (envp == NULL)
 		ft_free_n_err(-1, NULL, NULL, NULL);

@@ -6,7 +6,7 @@
 /*   By: fdonati <fdonati@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 17:10:23 by fdonati           #+#    #+#             */
-/*   Updated: 2024/06/03 15:37:09 by fdonati          ###   ########.fr       */
+/*   Updated: 2024/06/14 14:50:37 by fdonati          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ static int	ft_n_flag(char *arg)
 	if (arg[i] == '-')
 	{
 		i++;
+		if (arg[i] == '\0')
+			return (1);
 		while (arg[i] != '\0')
 		{
 			if (arg[i] != 'n')

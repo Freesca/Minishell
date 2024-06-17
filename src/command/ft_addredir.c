@@ -6,7 +6,7 @@
 /*   By: fdonati <fdonati@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 16:18:36 by fdonati           #+#    #+#             */
-/*   Updated: 2024/06/12 18:15:31 by fdonati          ###   ########.fr       */
+/*   Updated: 2024/06/14 11:15:37 by fdonati          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	ft_addredir(t_token_type type, char *value, int **redir)
 	if (**redir < 0)
 	{
 		ft_printf(2, "minishell: %s: No such file or directory\n", value);
-		return (0);
+		return (1);
 	}
 	return (0);
 }

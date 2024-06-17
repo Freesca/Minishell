@@ -6,7 +6,7 @@
 /*   By: fdonati <fdonati@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 22:08:59 by fdonati           #+#    #+#             */
-/*   Updated: 2024/06/06 15:06:13 by fdonati          ###   ########.fr       */
+/*   Updated: 2024/06/14 13:10:30 by fdonati          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ static long long	ft_isatoll(char *str, int *err)
 	{
 		if (ft_isdigit(str[i]) == 0)
 		{
-			ft_printf(2, "its not a number\n");
-			return (-1);
+			*err = 1;
+			return (0);
 		}
 		i++;
 	}

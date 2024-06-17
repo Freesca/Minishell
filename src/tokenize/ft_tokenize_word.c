@@ -6,7 +6,7 @@
 /*   By: fdonati <fdonati@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 14:52:01 by fdonati           #+#    #+#             */
-/*   Updated: 2024/06/13 11:41:29 by fdonati          ###   ########.fr       */
+/*   Updated: 2024/06/14 14:48:00 by fdonati          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static t_token	*ft_fd_token(char *str, t_token **token)
 
 	if (ft_lstlast_t(*token)->type == T_REDIR_HEREDOC)
 	{
-		if (*str == '\'' || *str == '\"')
+		if (ft_strchr(str, '\'') != NULL || ft_strchr(str, '\"') != NULL)
 			new = ft_lstnew_t(T_LIM_QUOTE, str);
 		else
 			new = ft_lstnew_t(T_LIM, str);

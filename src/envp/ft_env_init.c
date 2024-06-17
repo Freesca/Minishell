@@ -6,7 +6,7 @@
 /*   By: fdonati <fdonati@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 09:33:18 by fdonati           #+#    #+#             */
-/*   Updated: 2024/06/07 23:06:30 by fdonati          ###   ########.fr       */
+/*   Updated: 2024/06/14 13:19:21 by fdonati          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ t_env	*ft_env_init(char **envp)
 
 	i = 0;
 	env = NULL;
-	new = NULL;
 	while (envp[i] != NULL)
 	{
 		new = ft_lstnew_e(envp[i], ENV_VAR);

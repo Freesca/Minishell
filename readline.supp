@@ -1,4 +1,13 @@
 {
+   IgnoreDefinitelyLost
+   Memcheck:Leak
+   match-leak-kinds: definite
+   ...
+   fun:readline
+   ...
+}
+
+{
    IgnoreReadlineLeak
    Memcheck:Leak
    match-leak-kinds: reachable
@@ -6,7 +15,6 @@
    fun:add_history
    ...
 }
-
 {
    IgnoreReadlineLeak
    Memcheck:Leak
@@ -15,8 +23,6 @@
    fun:readline
    ...
 }
-
-#TODO check definitely lost
 {
    IgnoreReadlineLeak
    Memcheck:Leak
@@ -24,12 +30,24 @@
    fun:readline
    ...
 }
-
 {
-   IgnoreDefinitelyLost
+   Malloc_Leak_Below_Main
    Memcheck:Leak
-   match-leak-kinds: definite
+   fun:malloc
    ...
-   fun:readline
+   obj:/usr/bin/*
+}
+{
+   Calloc_Leak_Below_Main
+   Memcheck:Leak
+   fun:calloc
    ...
+   obj:/usr/bin/*
+}
+{
+   Realloc_Leak_Below_Main
+   Memcheck:Leak
+   fun:realloc
+   ...
+   obj:/usr/bin/*
 }

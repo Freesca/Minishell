@@ -6,7 +6,7 @@
 /*   By: fdonati <fdonati@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 15:06:57 by fdonati           #+#    #+#             */
-/*   Updated: 2024/06/12 19:46:37 by fdonati          ###   ########.fr       */
+/*   Updated: 2024/06/14 11:23:00 by fdonati          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ static void	ft_signal_handler_hc(int signum)
 		close(STDIN_FILENO);
 		g_exit_status = 130;
 	}
+	if (signum == SIGQUIT)
+		ft_printf(1, "\b\b  \b\b");
 }
 
 static int	ft_open_hc(char **str)
@@ -66,7 +68,7 @@ int	ft_addheredoc(char **lim_to_strhc, char ***path_hc, int quote, t_env *envp)
 	int		fd;
 
 	signal(SIGINT, ft_signal_handler_hc);
-	signal(SIGQUIT, SIG_IGN);
+	signal(SIGQUIT, ft_signal_handler_hc);
 	strhc = NULL;
 	fd = ft_open_hc(&strhc);
 	ft_addarg(strhc, path_hc);
