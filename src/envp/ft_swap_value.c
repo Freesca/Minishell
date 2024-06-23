@@ -6,7 +6,7 @@
 /*   By: fdonati <fdonati@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 17:44:06 by fdonati           #+#    #+#             */
-/*   Updated: 2024/06/14 00:45:58 by fdonati          ###   ########.fr       */
+/*   Updated: 2024/06/23 14:17:24 by fdonati          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ char	*ft_swap_value(char *line, int start, int end, t_env *envp)
 	new_line = NULL;
 	key = ft_substr(line, start + 1, end - start);
 	value = ft_get_envp_value(key, envp);
+	value = ft_special_quote(value);
 	new_line = ft_strunion(line, value, start, end);
 	if (key != NULL)
 		free(key);

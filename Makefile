@@ -21,8 +21,9 @@ SRCS		:= /main.c \
 				/envp/ft_env_init.c \
 				/envp/ft_env_to_mtx.c \
 				/envp/ft_swap_value.c \
-				/ft_free_n_err.c \
-				/ft_update_status.c \
+				/envp/ft_special_quote.c \
+				/utils/ft_free_n_err.c \
+				/utils/ft_update_status.c \
 				/command/ft_command.c \
 				/command/ft_command_init.c \
 				/command/ft_command_fill.c \
@@ -38,8 +39,10 @@ SRCS		:= /main.c \
 				/builtin/ft_echo.c \
 				/builtin/ft_exit.c \
 				/builtin/ft_export.c \
+				/builtin/ft_export_lexer.c \
 				/builtin/ft_unset.c \
 				/builtin/ft_cd.c \
+				/builtin/ft_cd_lexer.c \
 				/builtin/ft_pwd.c \
 				/builtin/ft_env.c \
 				/token_list/ft_lstnew_t.c \

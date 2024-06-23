@@ -6,7 +6,7 @@
 /*   By: fdonati <fdonati@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 15:06:57 by fdonati           #+#    #+#             */
-/*   Updated: 2024/06/14 11:23:00 by fdonati          ###   ########.fr       */
+/*   Updated: 2024/06/20 14:08:29 by fdonati          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,6 @@ static int	ft_line_hc(int fd, char *lim, int quote, t_env *envp)
 
 	ft_printf(1, "> ");
 	line = ft_get_next_line(0);
-	if (quote == 1)
-		line = ft_swap_envp_hc(line, envp);
 	if (line == NULL || ((ft_strncmp(line, lim, ft_strlen(lim)) == 0
 				&& line[ft_strlen(lim)] == '\n')))
 	{
@@ -57,6 +55,8 @@ static int	ft_line_hc(int fd, char *lim, int quote, t_env *envp)
 		free(line);
 		return (-1);
 	}
+	if (quote == 1)
+		line = ft_swap_envp_hc(line, envp);
 	ft_printf(fd, "%s", line);
 	free(line);
 	return (0);

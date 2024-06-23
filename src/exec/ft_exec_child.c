@@ -6,7 +6,7 @@
 /*   By: fdonati <fdonati@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 16:20:32 by fdonati           #+#    #+#             */
-/*   Updated: 2024/06/17 16:24:32 by fdonati          ###   ########.fr       */
+/*   Updated: 2024/06/21 17:30:42 by fdonati          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,22 +23,19 @@ static void	ft_stat(char *path, t_cmd **cmd, t_env **envp)
 			ft_printf(2, "minishell: %s: No such file or directory\n", path);
 			ft_free_n_exit(127, NULL, cmd, envp);
 		}
-		else if (errno == EACCES)
-		{
-			ft_printf(2, "minishell: %s: Permission denied\n", path);
-			ft_free_n_exit(126, NULL, cmd, envp);
-		}
 	}
-	if (S_ISDIR(buf.st_mode))
+	else if (S_ISDIR(buf.st_mode))
 	{
 		ft_printf(2, "minishell: %s: Is a directory\n", path);
 		ft_free_n_exit(126, NULL, cmd, envp);
 	}
-	else
+	if (access(path, F_OK) == 0 && access(path, X_OK) != 0)
 	{
-		ft_printf(2, "minishell: %s: Not a directory\n", path);
+		ft_printf(2, "minishell: %s: Permission denied\n", path);
 		ft_free_n_exit(126, NULL, cmd, envp);
 	}
+	ft_printf(2, "minishell: %s: Not a directory\n", path);
+	ft_free_n_exit(126, NULL, cmd, envp);
 }
 
 static void	ft_path_dir(t_cmd **cmd, t_env **envp)

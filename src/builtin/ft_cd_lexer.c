@@ -1,32 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_env.c                                           :+:      :+:    :+:   */
+/*   ft_cd_lexer.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fdonati <fdonati@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/07 22:46:28 by fdonati           #+#    #+#             */
-/*   Updated: 2024/06/20 15:55:17 by fdonati          ###   ########.fr       */
+/*   Created: 2024/06/20 19:28:42 by fdonati           #+#    #+#             */
+/*   Updated: 2024/06/20 19:31:12 by fdonati          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	ft_env(t_cmd *cmd, t_env *envp)
+int	ft_cd_lexer(t_cmd *cmd)
 {
-	t_env	*tmp;
-
-	tmp = envp;
-	if (cmd->args != NULL && cmd->args[1] != NULL)
+	if (cmd->args != NULL && cmd->args[1] != NULL && cmd->args[2] != NULL)
 	{
-		ft_printf(2, "env: %s: No such file or directory\n", cmd->args[1]);
-		return (127);
-	}
-	while (tmp != NULL)
-	{
-		if (tmp->value != NULL && tmp->type != HDN_VAR)
-			ft_printf(1, "%s=%s\n", tmp->key, tmp->value);
-		tmp = tmp->next;
+		ft_printf(2, "minishell: cd: too many arguments\n");
+		return (1);
 	}
 	return (0);
 }

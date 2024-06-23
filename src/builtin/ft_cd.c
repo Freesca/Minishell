@@ -6,7 +6,7 @@
 /*   By: fdonati <fdonati@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 16:26:36 by fdonati           #+#    #+#             */
-/*   Updated: 2024/06/14 14:27:51 by fdonati          ###   ########.fr       */
+/*   Updated: 2024/06/20 19:29:04 by fdonati          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,18 +28,20 @@ static int	ft_get_path(t_cmd *cmd, char **path, t_env *envp)
 	if (cmd->args[1] == NULL)
 	{
 		*path = ft_get_envp_value("HOME", envp);
-		if (*path == NULL)
+		if (**path == '\0')
 		{
 			ft_printf(2, "minishell: cd: HOME not set\n");
+			free(*path);
 			return (1);
 		}
 	}
 	else if (ft_strcmp(cmd->args[1], "-") == 0)
 	{
 		*path = ft_get_envp_value("OLDPWD", envp);
-		if (*path == NULL)
+		if (**path == '\0')
 		{
 			ft_printf(2, "minishell: cd: OLDPWD not set\n");
+			free(*path);
 			return (1);
 		}
 	}
@@ -66,7 +68,7 @@ static void	ft_update_value(t_env **envp, char *key, char *value)
 
 	str = NULL;
 	new = NULL;
-	if (ft_change_value(*envp, key, value) == 0)
+	if (ft_change_value(envp, key, value, 0) == 0)
 	{
 		str = ft_strjoin(key, "=");
 		if (str == NULL)
@@ -91,6 +93,8 @@ int	ft_cd(t_cmd *cmd, t_env **envp)
 	path = NULL;
 	oldpwd = NULL;
 	pwd = NULL;
+	if (ft_cd_lexer(cmd) != 0)
+		return (1);
 	if (ft_get_path(cmd, &path, *envp) != 0)
 		return (1);
 	oldpwd = ft_get_envp_value("PWD", *envp);

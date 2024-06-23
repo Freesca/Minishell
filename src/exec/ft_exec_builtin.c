@@ -6,7 +6,7 @@
 /*   By: fdonati <fdonati@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 16:51:37 by fdonati           #+#    #+#             */
-/*   Updated: 2024/06/14 16:43:13 by fdonati          ###   ########.fr       */
+/*   Updated: 2024/06/18 12:29:00 by fdonati          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int	ft_exec_builtin(t_cmd **cmd, t_env **envp, t_data *data, int cmd_count)
 	int	ret;
 
 	ret = 0;
+	(void)data;
 	signal(SIGPIPE, SIG_IGN);
 	if (ft_strcmp((*cmd)->args[0], "echo") == 0)
 		ret = ft_echo(*cmd);
@@ -52,17 +53,21 @@ int	ft_exec_builtin(t_cmd **cmd, t_env **envp, t_data *data, int cmd_count)
 	if (ft_strcmp((*cmd)->args[0], "cd") == 0)
 		return (ft_cd(*cmd, envp));
 	if (ft_strcmp((*cmd)->args[0], "env") == 0)
-		return (ft_env(*envp));
-	dup2(data->original_stdin, STDIN_FILENO);
-	dup2(data->original_stdout, STDOUT_FILENO);
-	close(data->original_stdin);
-	close(data->original_stdout);
+		return (ft_env(*cmd, *envp));
 	return (ret);
 }
 
 int	ft_exec_builtin_solo(t_cmd **cmd, t_env **envp, t_data *data, int cmd_count)
 {
+	int	ret;
+
+	ret = 0;
 	if (ft_redir(cmd) != 0)
 		return (1);
-	return (ft_exec_builtin(cmd, envp, data, cmd_count));
+	ret = ft_exec_builtin(cmd, envp, data, cmd_count);
+	dup2(data->original_stdin, STDIN_FILENO);
+	dup2(data->original_stdout, STDOUT_FILENO);
+	close(data->original_stdin);
+	close(data->original_stdout);
+	return (ret);
 }

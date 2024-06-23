@@ -6,7 +6,7 @@
 /*   By: fdonati <fdonati@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 09:57:22 by fdonati           #+#    #+#             */
-/*   Updated: 2024/06/06 14:26:43 by fdonati          ###   ########.fr       */
+/*   Updated: 2024/06/20 16:31:22 by fdonati          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,15 @@ int	ft_key_n_value(char *str, char **key, char **value)
 	int	i;
 
 	i = 0;
-	while (str[i] != '\0' && str[i] != '=')
+	while (str[i] != '\0' && str[i] != '=' && str[i] != '+')
 		i++;
 	*key = ft_substr(str, 0, i);
 	if (!*key)
 		return (-1);
 	if (ft_strchr(str, '=') != NULL)
 	{
+		if (str[i] == '+')
+			i++;
 		*value = ft_strdup(str + i + 1);
 		if (!*value)
 		{

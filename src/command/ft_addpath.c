@@ -6,7 +6,7 @@
 /*   By: fdonati <fdonati@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 16:38:28 by fdonati           #+#    #+#             */
-/*   Updated: 2024/06/14 15:26:12 by fdonati          ###   ########.fr       */
+/*   Updated: 2024/06/18 15:59:07 by fdonati          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,8 @@ int	ft_addpath(char *value, char **path, t_env **envp)
 		}
 		return (0);
 	}
+	if (ft_strcmp(value, ".") == 0 || ft_strcmp(value, "..") == 0)
+		return (0);
 	path_split = ft_split_path(envp);
 	if (path_split == NULL)
 		return (0);

@@ -6,10 +6,9 @@
 /*   By: fdonati <fdonati@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 15:15:19 by fdonati           #+#    #+#             */
-/*   Updated: 2024/06/17 16:02:58 by fdonati          ###   ########.fr       */
+/*   Updated: 2024/06/23 14:18:00 by fdonati          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
@@ -28,7 +27,6 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 # include <stdbool.h>
-
 
 typedef enum e_env_type
 {
@@ -127,21 +125,24 @@ int		ft_exec_builtin_solo(t_cmd **cmd,
 			t_env **envp, t_data *data, int cmd_count);
 int		ft_echo(t_cmd *cmd);
 int		ft_exit(t_cmd **cmd, t_env **envp, int cmd_count);
-int		ft_env(t_env *envp);
+int		ft_env(t_cmd *cmd, t_env *envp);
 int		ft_export(t_cmd *cmd, t_env **envp);
+int		ft_export_lexer(char *str);
 int		ft_unset(t_cmd *cmd, t_env **envp);
 int		ft_pwd(void);
 int		ft_cd(t_cmd *cmd, t_env **envp);
+int		ft_cd_lexer(t_cmd *cmd);
 
-int		ft_change_value(t_env *env, char *key, char *value);
+int		ft_change_value(t_env **env, char *key, char *value, int flag);
 char	*ft_swap_envp(char *line, t_env *envp);
 char	*ft_process_env_var(char *line, int start, int *i, t_env *envp);
 void	ft_find_env_var_end(const char *line, int *i);
 int		ft_skip_single_quotes(const char *line, int i);
 char	*ft_swap_envp_hc(char *line, t_env *envp);
-char	*ft_swap_scroll_hc(char *line, int *i, t_env *envp);
+char	*ft_swap_scroll_hc(char *line, int *i, t_env *envp, int flag_lim);
 char	*ft_swap_value(char *line, int start, int end, t_env *envp);
 char	*ft_get_envp_value(const char *key, t_env *envp);
+char	*ft_special_quote(char *str);
 char	**ft_env_to_mtx(t_env *envp);
 
 t_token	*ft_lstnew_t(t_token_type type, char *value);

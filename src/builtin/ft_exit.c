@@ -6,7 +6,7 @@
 /*   By: fdonati <fdonati@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 22:08:59 by fdonati           #+#    #+#             */
-/*   Updated: 2024/06/14 13:10:30 by fdonati          ###   ########.fr       */
+/*   Updated: 2024/06/21 17:38:05 by fdonati          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,16 @@ static long long	ft_isatoll(char *str, int *err)
 
 	i = 0;
 	nmb = 0;
-	if (str[i] == '-')
+	if (str == NULL)
+		return (0);
+	if (str[i] == '-' || str[i] == '+')
 		i++;
 	while (str[i] != '\0')
 	{
 		if (ft_isdigit(str[i]) == 0)
 		{
 			*err = 1;
-			return (0);
+			return (free(str), 0);
 		}
 		i++;
 	}
@@ -36,7 +38,7 @@ static long long	ft_isatoll(char *str, int *err)
 	nmb = nmb % 256;
 	if (nmb < 0)
 		nmb = 256 + nmb;
-	return (nmb);
+	return (free(str), nmb);
 }
 
 int	ft_exit(t_cmd **cmd, t_env **envp, int cmd_count)
@@ -46,11 +48,12 @@ int	ft_exit(t_cmd **cmd, t_env **envp, int cmd_count)
 
 	exit = 0;
 	err = 0;
+
 	if (cmd_count == 0 && (*cmd)->next == NULL)
-		ft_printf(2, "exit\n");
+		ft_printf(1, "exit\n");
 	if ((*cmd)->args[1] != NULL)
 	{
-		exit = ft_isatoll((*cmd)->args[1], &err);
+		exit = ft_isatoll(ft_strtrim((*cmd)->args[1], " \t"), &err);
 		if (err != 0)
 		{
 			ft_printf(2, "minishell: exit: ");

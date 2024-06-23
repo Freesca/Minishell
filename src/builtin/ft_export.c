@@ -6,7 +6,7 @@
 /*   By: fdonati <fdonati@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 16:01:22 by fdonati           #+#    #+#             */
-/*   Updated: 2024/06/14 15:31:01 by fdonati          ###   ########.fr       */
+/*   Updated: 2024/06/20 16:39:28 by fdonati          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,67 +36,43 @@ static void	ft_print_export(t_env *envp)
 
 }
 
-static int	ft_export_value(char *str, t_env **envp)
-{
-	t_env	*new;
-	char	*key;
-	char	*value;
-	int		ret;
-
-	new = NULL;
-	ret = ft_key_n_value(str, &key, &value);
-	if (ret == -1)
-		return (-1);
-	if (ft_change_value(*envp, key, value) == 1)
-	{
-		free(key);
-		free(value);
-		return (0);
-	}
-	else
-	{
-		new = ft_lstnew_e(str, EXP_VAR);
-		free(key);
-		free(value);
-		if (!new)
-			return (-1);
-		ft_lstaddback_e(envp, new);
-	}
-	return (0);
-}
-
-static void	ft_export_err(char *str)
-{
-	ft_printf(2, "minishell: export: `");
-	ft_printf(2, str);
-	ft_printf(2, "': not a valid identifier\n");
-}
-
-static int	ft_export_lexer(char *str)
+static int	ft_plus_flag(char *str)
 {
 	int	i;
 
 	i = 0;
-	if (str[0] == '\0')
-	{
-		ft_export_err(str);
+	while (str[i] != '\0' && str[i] != '+')
+		i++;
+	if (str[i] == '+')
 		return (1);
-	}
-	if (str[0] == '=')
+	return (0);
+
+}
+
+static int	ft_export_value(char *str, t_env **envp)
+{
+	int		flag;
+	char	*key;
+	char	*value;
+	t_env	*new;
+
+	new = NULL;
+	flag = ft_plus_flag(str);
+	if (ft_key_n_value(str, &key, &value) == -1)
+		return (-1);
+	if (ft_change_value(envp, key, value, flag) != 1)
 	{
-		ft_export_err(str);
-		return (1);
-	}
-	while (str[i] != '\0' && str[i] != '=')
-	{
-		if (ft_isalpha(str[0]) == 0
-			|| ft_isalnum(str[i]) == 0)
+		new = ft_lstnew_e(str, EXP_VAR);
+		if (new == NULL)
 		{
-			ft_export_err(str);
+			free(key);
+			free(value);
 			return (1);
 		}
-		i++;
+		ft_lstaddback_e(envp, new);
 	}
+	free(key);
+	free(value);
 	return (0);
 }
 

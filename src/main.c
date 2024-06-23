@@ -6,7 +6,7 @@
 /*   By: fdonati <fdonati@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 15:00:56 by fdonati           #+#    #+#             */
-/*   Updated: 2024/06/17 16:15:38 by fdonati          ###   ########.fr       */
+/*   Updated: 2024/06/21 18:02:29 by fdonati          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,22 @@ static void	ft_signal_handler(int signum)
 	}
 }
 
+static int	ft_blank_line(char *line)
+{
+	int	i;
+
+	i = 0;
+	if (line == NULL)
+		return (0);
+	while (line[i] != '\0')
+	{
+		if (ft_strchr(" \t", line[i]) == NULL)
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 static void	ft_readline(t_env **envp, int *exit_status,
 						t_token **token)
 {
@@ -53,6 +69,12 @@ static void	ft_readline(t_env **envp, int *exit_status,
 	signal(SIGINT, ft_signal_handler);
 	signal(SIGQUIT, SIG_IGN);
 	line = readline("minishell$ ");
+	while (ft_blank_line(line) == 1)
+	{
+		if (line)
+			free(line);
+		line = readline("minishell$ ");
+	}
 	*exit_status = 0;
 	if (!line)
 	{
@@ -78,9 +100,8 @@ int	main(int argc, char **argv, char **environ)
 	(void)argc;
 	(void)argv;
 	exit_status = 0;
+	cmd = NULL;
 	envp = ft_env_init(environ);
-	if (envp == NULL)
-		ft_free_n_err(-1, NULL, NULL, NULL);
 	while (1)
 	{
 		ft_readline(&envp, &exit_status, &token);
@@ -89,7 +110,7 @@ int	main(int argc, char **argv, char **environ)
 			signal(SIGQUIT, ft_signal_handler_cmd);
 			signal(SIGINT, ft_signal_handler_cmd);
 			exit_status = ft_command(&token, &cmd, &envp);
-		}
+		}			
 		exit_status = ft_update_status(exit_status, &envp);
 		ft_free_n_err(exit_status, &token, &cmd, &envp);
 	}
