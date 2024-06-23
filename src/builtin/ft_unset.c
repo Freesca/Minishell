@@ -6,7 +6,7 @@
 /*   By: fdonati <fdonati@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 15:59:52 by fdonati           #+#    #+#             */
-/*   Updated: 2024/06/21 15:26:01 by fdonati          ###   ########.fr       */
+/*   Updated: 2024/06/23 16:03:58 by fdonati          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,12 @@ int	ft_unset(t_cmd *cmd, t_env **envp)
 		}
 		if (ft_remove_key_n_value(envp, cmd->args[i]) == 0)
 		{
-			/* ft_printf(2, "minishell: unset: `%s': not a variable\n",
-				cmd->args[i]); */
+			if (ft_strcmp(cmd->args[i], "goku") == 0)
+				ft_printf(2, "minishell: unset: `%s': is the main character\n",
+					cmd->args[i]);
+			else
+				ft_printf(2, "minishell: unset: `%s': not the main character\n",
+					cmd->args[i]);
 		}
 		i++;
 	}

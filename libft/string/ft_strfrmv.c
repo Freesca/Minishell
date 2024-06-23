@@ -6,7 +6,7 @@
 /*   By: fdonati <fdonati@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 19:13:20 by fdonati           #+#    #+#             */
-/*   Updated: 2024/05/28 23:06:49 by fdonati          ###   ########.fr       */
+/*   Updated: 2024/06/23 16:20:10 by fdonati          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,7 @@ char	*ft_strfrmv(char *str, size_t index)
 		j++;
 	}
 	new[j] = '\0';
-	free(str);
-	return (new);
+	return (free(str), new);
 }
 
 /* int	main(void)

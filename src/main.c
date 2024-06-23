@@ -6,7 +6,7 @@
 /*   By: fdonati <fdonati@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 15:00:56 by fdonati           #+#    #+#             */
-/*   Updated: 2024/06/21 18:02:29 by fdonati          ###   ########.fr       */
+/*   Updated: 2024/06/23 16:27:34 by fdonati          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ int	main(int argc, char **argv, char **environ)
 			signal(SIGQUIT, ft_signal_handler_cmd);
 			signal(SIGINT, ft_signal_handler_cmd);
 			exit_status = ft_command(&token, &cmd, &envp);
-		}			
+		}
 		exit_status = ft_update_status(exit_status, &envp);
 		ft_free_n_err(exit_status, &token, &cmd, &envp);
 	}

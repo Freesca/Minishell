@@ -6,7 +6,7 @@
 /*   By: fdonati <fdonati@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 14:52:01 by fdonati           #+#    #+#             */
-/*   Updated: 2024/06/14 14:48:00 by fdonati          ###   ########.fr       */
+/*   Updated: 2024/06/23 16:26:07 by fdonati          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 static int	ft_was_redir(t_token_type type)
 {
-
 	if (type == T_REDIR_IN || type == T_REDIR_APPEND
 		|| type == T_REDIR_HEREDOC || type == T_REDIR_OUT)
 		return (1);
@@ -92,15 +91,6 @@ int	ft_word(t_token **token, char *line, int *i, int *cmd_count)
 		return (-1);
 	if (ft_new_token(&new, token, str, cmd_count) == -1)
 		return (-1);
-	/* if (*token != NULL && (ft_was_redir((ft_lstlast_t(*token))->type)) == 1)
-		new = ft_fd_token(str, token);
-	else
-		new = ft_word_token(str, cmd_count);
-	if (new == NULL)
-	{
-		free(str);
-		return (-1);
-	} */
 	new->value = ft_quote_clean(str);
 	if (new->value == NULL)
 		return (-1);

@@ -6,10 +6,9 @@
 /*   By: fdonati <fdonati@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 14:13:38 by fdonati           #+#    #+#             */
-/*   Updated: 2024/06/10 14:13:47 by fdonati          ###   ########.fr       */
+/*   Updated: 2024/06/23 16:24:11 by fdonati          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "minishell.h"
 
@@ -41,5 +40,3 @@ int	ft_addarg(char *value, char ***args)
 	*args = new;
 	return (0);
 }
-
-

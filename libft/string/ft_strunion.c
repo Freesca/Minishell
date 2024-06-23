@@ -6,7 +6,7 @@
 /*   By: fdonati <fdonati@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/22 14:56:00 by fdonati           #+#    #+#             */
-/*   Updated: 2024/05/28 15:16:12 by fdonati          ###   ########.fr       */
+/*   Updated: 2024/06/23 16:21:32 by fdonati          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,6 @@ char	*ft_strunion(char *line, char *value, int start, int end)
 	int		end = 12;
 
 	char	*new_line = ft_strunion(line, value, start, end);
-	ft_printf(1, "ft_strunion(\"%s\", \"%s\", %d, %d) = \"%s\"\n", line, value, start, end, new_line);
+	ft_printf(1, "ft_strunion(\"%s\", \"%s\", %d, %d) = 
+				\"%s\"\n", line, value, start, end, new_line);
 } */

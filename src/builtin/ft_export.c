@@ -6,7 +6,7 @@
 /*   By: fdonati <fdonati@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 16:01:22 by fdonati           #+#    #+#             */
-/*   Updated: 2024/06/20 16:39:28 by fdonati          ###   ########.fr       */
+/*   Updated: 2024/06/23 16:26:28 by fdonati          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ static void	ft_print_export(t_env *envp)
 		}
 		tmp = tmp->next;
 	}
-
 }
 
 static int	ft_plus_flag(char *str)
@@ -46,7 +45,6 @@ static int	ft_plus_flag(char *str)
 	if (str[i] == '+')
 		return (1);
 	return (0);
-
 }
 
 static int	ft_export_value(char *str, t_env **envp)

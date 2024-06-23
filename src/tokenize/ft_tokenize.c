@@ -6,23 +6,11 @@
 /*   By: fdonati <fdonati@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 15:59:53 by fdonati           #+#    #+#             */
-/*   Updated: 2024/06/23 15:00:25 by fdonati          ###   ########.fr       */
+/*   Updated: 2024/06/23 17:32:05 by fdonati          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-/* static void	ft_print_token(t_token *token)
-{
-	t_token	*tmp;
-
-	tmp = token;
-	while (tmp != NULL)
-	{
-		ft_printf(1, "type: %d, str: %s\n", tmp->type, tmp->value);
-		tmp = tmp->next;
-	}
-} */
 
 int	ft_tokenize(char *line, t_token **token, t_env *envp)
 {
@@ -37,7 +25,7 @@ int	ft_tokenize(char *line, t_token **token, t_env *envp)
 	line = ft_swap_envp(line, envp);
 	if (line == NULL)
 		return (-1);
-	while (line[i] != '\0')
+	while (line[i] != '\0' && ret == 0)
 	{
 		if (ft_strchr(" \t", line[i]) != NULL)
 			i++;
@@ -45,10 +33,20 @@ int	ft_tokenize(char *line, t_token **token, t_env *envp)
 			ret = ft_special_char(token, line, &i, &cmd_count);
 		else
 			ret = ft_word(token, line, &i, &cmd_count);
-		if (ret != 0)
-			return (ret);
 	}
-	ret = ft_lexer(token);
-	/* ft_print_token(*token); */
+	if (ret == 0)
+		ret = ft_lexer(token);
 	return (free(line), ret);
 }
+
+/* static void	ft_print_token(t_token *token)
+{
+	t_token	*tmp;
+
+	tmp = token;
+	while (tmp != NULL)
+	{
+		ft_printf(1, "type: %d, str: %s\n", tmp->type, tmp->value);
+		tmp = tmp->next;
+	}
+} */

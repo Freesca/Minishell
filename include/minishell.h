@@ -6,7 +6,7 @@
 /*   By: fdonati <fdonati@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 15:15:19 by fdonati           #+#    #+#             */
-/*   Updated: 2024/06/23 14:18:00 by fdonati          ###   ########.fr       */
+/*   Updated: 2024/06/23 16:23:23 by fdonati          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,6 @@ typedef struct s_data
 	int		original_stdin;
 	int		original_stdout;
 	int		pipe_fd[2];
-	int		fd_in;
 }				t_data;
 
 extern int	g_exit_status;

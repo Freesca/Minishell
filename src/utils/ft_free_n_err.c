@@ -6,7 +6,7 @@
 /*   By: fdonati <fdonati@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 17:37:43 by fdonati           #+#    #+#             */
-/*   Updated: 2024/06/17 16:16:57 by fdonati          ###   ########.fr       */
+/*   Updated: 2024/06/23 17:20:29 by fdonati          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ static void	ft_close_fd(void)
 void	ft_free_n_exit(int err, t_token **token, t_cmd **cmd, t_env **envp)
 {
 	ft_close_fd();
+	rl_clear_history();
 	if (token != NULL)
 	{
 		ft_lstclear_t(token);
@@ -85,4 +86,3 @@ void	ft_free_n_err(int err, t_token **token, t_cmd **cmd, t_env **envp)
 		exit(errno);
 	}
 }
-

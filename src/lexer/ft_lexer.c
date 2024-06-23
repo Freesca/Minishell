@@ -6,7 +6,7 @@
 /*   By: fdonati <fdonati@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 22:59:25 by fdonati           #+#    #+#             */
-/*   Updated: 2024/06/12 14:12:57 by fdonati          ###   ########.fr       */
+/*   Updated: 2024/06/23 17:34:27 by fdonati          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	ft_lexer_error3(t_token *tmp)
 {
-	ft_printf(2, "minishell: syntax error near");
+	ft_printf(2, "minishell: syntax error near ");
 	ft_printf(2, "unexpected token `%s'\n", tmp->next->value);
 	return (2);
 }
@@ -23,12 +23,12 @@ static int	ft_lexer_error2(t_token *tmp)
 {
 	if (tmp->next == NULL)
 	{
-		ft_printf(2, "minishell: syntax error near");
+		ft_printf(2, "minishell: syntax error near ");
 		ft_printf(2, "unexpected token `newline'\n");
 	}
 	else
 	{
-		ft_printf(2, "minishell: syntax error near");
+		ft_printf(2, "minishell: syntax error near ");
 		ft_printf(2, "unexpected token `%s'\n", tmp->next->value);
 	}
 	return (2);
@@ -36,7 +36,7 @@ static int	ft_lexer_error2(t_token *tmp)
 
 static int	ft_lexer_error(t_token *tmp)
 {
-	ft_printf(2, "minishell: syntax error near");
+	ft_printf(2, "minishell: syntax error near ");
 	ft_printf(2, "unexpected token `%s'\n", tmp->value);
 	return (2);
 }

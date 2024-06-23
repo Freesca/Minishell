@@ -6,7 +6,7 @@
 /*   By: fdonati <fdonati@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 16:20:32 by fdonati           #+#    #+#             */
-/*   Updated: 2024/06/21 17:30:42 by fdonati          ###   ########.fr       */
+/*   Updated: 2024/06/23 16:25:15 by fdonati          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ static void	ft_path_dir(t_cmd **cmd, t_env **envp)
 		ft_free_n_exit(127, NULL, cmd, envp);
 	}
 }
-
 
 void	ft_exec_child(t_cmd **cmd, t_env **envp,
 						t_data *data, int cmd_count)

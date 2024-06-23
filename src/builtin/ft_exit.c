@@ -6,7 +6,7 @@
 /*   By: fdonati <fdonati@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 22:08:59 by fdonati           #+#    #+#             */
-/*   Updated: 2024/06/21 17:38:05 by fdonati          ###   ########.fr       */
+/*   Updated: 2024/06/23 16:26:36 by fdonati          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ int	ft_exit(t_cmd **cmd, t_env **envp, int cmd_count)
 
 	exit = 0;
 	err = 0;
-
 	if (cmd_count == 0 && (*cmd)->next == NULL)
 		ft_printf(1, "exit\n");
 	if ((*cmd)->args[1] != NULL)
