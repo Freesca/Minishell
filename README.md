@@ -124,7 +124,7 @@ bash
 
 Known Issues
 
-    The project uses the signal() function for handling signals like SIGINT (Ctrl-C), SIGQUIT (Ctrl-), and EOF (Ctrl-D). However, signal() is less reliable than sigaction(), and its behavior can be inconsistent across different platforms or versions of UNIX systems. This could lead to potential issues with signal handling, such as improper resetting of signal handlers after execution.
+The project uses the signal() function for handling signals like SIGINT (Ctrl-C), SIGQUIT (Ctrl-), and EOF (Ctrl-D). However, signal() is less reliable than sigaction(), and its behavior can be inconsistent across different platforms or versions of UNIX systems. This could lead to potential issues with signal handling, such as improper resetting of signal handlers after execution.
 
 Contributing
 
