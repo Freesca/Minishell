@@ -6,7 +6,7 @@
 /*   By: fdonati <fdonati@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 15:06:57 by fdonati           #+#    #+#             */
-/*   Updated: 2024/06/20 14:08:29 by fdonati          ###   ########.fr       */
+/*   Updated: 2024/06/25 18:10:21 by fdonati          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,6 @@ int	ft_addheredoc(char **lim_to_strhc, char ***path_hc, int quote, t_env *envp)
 	free(*lim_to_strhc);
 	*lim_to_strhc = strhc;
 	if (g_exit_status == 130)
-		return (-1);
+		return (-2);
 	return (0);
 }

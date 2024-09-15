@@ -25,7 +25,6 @@ SRCS = ./ctype/ft_isalnum.c \
 	./ft_fd/ft_puthex_fd.c \
 	./ft_fd/ft_putptr_fd.c \
 	./gnl/ft_get_next_line.c \
-	./gnl/ft_get_next_line_utils.c \
 	./list/ft_lstadd_back.c \
 	./list/ft_lstadd_front.c \
 	./list/ft_lstclear.c \
@@ -48,7 +47,6 @@ SRCS = ./ctype/ft_isalnum.c \
 	./not_standard/ft_issign.c \
 	./not_standard/ft_free_matrix.c \
 	./stdlib/ft_atoi_err.c \
-	./stdlib/ft_atoll_err.c \
 	./stdlib/ft_atoi.c \
 	./stdlib/ft_calloc.c \
 	./string/ft_strchr.c \
@@ -61,12 +59,9 @@ SRCS = ./ctype/ft_isalnum.c \
 	./string/ft_strlen.c \
 	./string/ft_strmapi.c \
 	./string/ft_strncmp.c \
-	./string/ft_strcmp.c \
 	./string/ft_strnstr.c \
 	./string/ft_strrchr.c \
 	./string/ft_strtrim.c \
-	./string/ft_strfrmv.c \
-	./string/ft_strunion.c \
 	./ft_printf/ft_printf.c
 
 

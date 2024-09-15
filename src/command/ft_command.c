@@ -6,7 +6,7 @@
 /*   By: fdonati <fdonati@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 14:17:49 by fdonati           #+#    #+#             */
-/*   Updated: 2024/06/24 17:49:40 by fdonati          ###   ########.fr       */
+/*   Updated: 2024/06/25 18:25:20 by fdonati          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,11 @@ int	ft_command(t_token **token, t_cmd **cmd, t_env **envp)
 	ret = ft_data_init(&data);
 	if (ret == 0)
 		ret = ft_command_init(cmd, *token, envp);
-	if (*cmd == NULL)
-		return (ret);
-	if ((*cmd)->args == NULL && (*cmd)->next == NULL)
-		return (ret);
 	dup2(data.original_stdin, STDIN_FILENO);
+	if (ret == -2)
+		return (1);
+	if ((*cmd) == NULL || ((*cmd)->args == NULL && (*cmd)->next == NULL))
+		return (ret);
 	if (token != NULL)
 	{
 		ft_lstclear_t(token);
@@ -45,8 +45,6 @@ int	ft_command(t_token **token, t_cmd **cmd, t_env **envp)
 	}
 	if (ret >= 0)
 		ret = ft_exec(cmd, envp, &data);
-	if (ret == -1)
-		ret = 1;
 	return (ret);
 }
 

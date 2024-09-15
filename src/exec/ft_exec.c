@@ -6,7 +6,7 @@
 /*   By: fdonati <fdonati@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 12:25:43 by fdonati           #+#    #+#             */
-/*   Updated: 2024/06/21 18:13:06 by fdonati          ###   ########.fr       */
+/*   Updated: 2024/06/25 18:26:04 by fdonati          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,5 +74,5 @@ int	ft_exec(t_cmd **cmd, t_env **envp, t_data *data)
 			last_pid = pid;
 		ft_lstcut_c(cmd);
 	}
-	return (ft_wait_n_restore(pid, data, cmd_count));
+	return (ft_wait_n_restore(last_pid, data, cmd_count));
 }
