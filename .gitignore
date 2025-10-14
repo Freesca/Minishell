@@ -1,0 +1,47 @@
+# Compiled object files
+*.o
+
+# Compiled static libraries
+*.a
+
+# Compiled dynamic libraries
+*.so
+*.dylib
+
+# Executable files
+*.out
+*.exe
+minishell
+
+# Debug files
+*.gch
+*.gcno
+*.gcda
+*.gcov
+
+# Editor/IDE files
+*.swp
+*.swo
+*.bak
+*~
+
+# Build directories
+/build/
+bin/
+obj/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# CMake files
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# Log files
+*.log
+
+# vscode settings
+.vscode/

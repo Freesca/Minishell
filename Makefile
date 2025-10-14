@@ -78,6 +78,7 @@ clean:
 fclean: clean
 	make fclean -C libft/
 	$(RM) $(NAME)
+	$(RM) -r .dir
 
 re: fclean all
 
